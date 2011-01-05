@@ -1,0 +1,8 @@
+--- qesteidutil-0.3.0/qesteidutil.desktop~	2009-11-03 18:26:44.000000000 +0200
++++ qesteidutil-0.3.0/qesteidutil.desktop	2011-01-06 00:00:47.234141566 +0200
+@@ -7,4 +7,4 @@
+ Exec=qesteidutil %F
+ Icon=qesteidutil
+ Terminal=false
+-Categories=Qt;Utility;
++Categories=Qt;Security;Utility;

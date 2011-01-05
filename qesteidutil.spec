@@ -9,6 +9,7 @@ Source0:	http://esteid.googlecode.com/files/%{name}-%{version}.tar.bz2
 # Source0-md5:	f91ddc6022ecf86753dc3492a8e33baf
 # Use system qtsingleapplication, backported from upstream SVN
 Patch0:		%{name}-0.3.0-system_qtsingleapplication.patch
+Patch1:		desktop.patch
 BuildRequires:	QtSingleApplication-devel
 BuildRequires:	QtWebKit-devel
 BuildRequires:	cmake
@@ -30,6 +31,7 @@ extract and view certificates, set up mobile ID, and configure
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p1
 
 # Remove bundled qtsingleapplication to make sure it isn't used
 rm -rf qtsingleapplication
