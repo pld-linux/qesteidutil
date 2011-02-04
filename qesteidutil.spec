@@ -1,7 +1,7 @@
 Summary:	Estonian ID card utility
 Name:		qesteidutil
 Version:	0.3.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 URL:		http://code.google.com/p/esteid/
@@ -18,6 +18,8 @@ BuildRequires:	libp11-devel
 BuildRequires:	openssl-devel
 BuildRequires:	qt4-build
 BuildRequires:	smartcardpp-devel
+Requires(post,postun):	gtk-update-icon-cache
+Requires(post,postun):	hicolor-icon-theme
 Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
