@@ -12,11 +12,13 @@ Patch0:		%{name}-0.3.0-system_qtsingleapplication.patch
 Patch1:		desktop.patch
 BuildRequires:	QtSingleApplication-devel
 BuildRequires:	QtWebKit-devel
+BuildRequires:	QtXmlPatterns-devel
 BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	libp11-devel
 BuildRequires:	openssl-devel
 BuildRequires:	qt4-build
+BuildRequires:	qt4-linguist
 BuildRequires:	smartcardpp-devel
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
