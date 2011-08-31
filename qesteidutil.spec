@@ -1,7 +1,7 @@
 Summary:	Estonian ID card utility
 Name:		qesteidutil
 Version:	0.3.0
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		X11/Applications
 URL:		http://code.google.com/p/esteid/
