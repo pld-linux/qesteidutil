@@ -1,13 +1,12 @@
 Summary:	Estonian ID card utility
 Name:		qesteidutil
-Version:	0.3.0
-Release:	3
+Version:	0.3.1
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 URL:		http://code.google.com/p/esteid/
 Source0:	http://esteid.googlecode.com/files/%{name}-%{version}.tar.bz2
-# Source0-md5:	f91ddc6022ecf86753dc3492a8e33baf
-# Use system qtsingleapplication, backported from upstream SVN
+# Source0-md5:	bd431df405ff813acc4f658c456f2a72
 Patch0:		%{name}-0.3.0-system_qtsingleapplication.patch
 Patch1:		desktop.patch
 BuildRequires:	QtSingleApplication-devel
@@ -34,7 +33,7 @@ extract and view certificates, set up mobile ID, and configure
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1
 %patch1 -p1
 
 # Remove bundled qtsingleapplication to make sure it isn't used
@@ -66,5 +65,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/qesteidutil
+%{_mandir}/man1/qesteidutil.1*
 %{_desktopdir}/qesteidutil.desktop
 %{_iconsdir}/hicolor/*/apps/qesteidutil.png
