@@ -1,18 +1,18 @@
 Summary:	Estonian ID card utility
 Name:		qesteidutil
-Version:	0.3.1
-Release:	2
+Version:	3.8.0.1106
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-URL:		http://code.google.com/p/esteid/
-Source0:	http://esteid.googlecode.com/files/%{name}-%{version}.tar.bz2
-# Source0-md5:	bd431df405ff813acc4f658c456f2a72
-Patch0:		%{name}-0.3.0-system_qtsingleapplication.patch
+Source0:	https://installer.id.ee/media/sources/%{name}-%{version}.tar.gz
+# Source0-md5:	4e5a792fa4de027d367a26b4f0b82ac1
+#Patch0: %{name}-0.3.0-system_qtsingleapplication.patch
 Patch1:		desktop.patch
+URL:		http://www.ria.ee/
 BuildRequires:	QtSingleApplication-devel
 BuildRequires:	QtWebKit-devel
 BuildRequires:	QtXmlPatterns-devel
-BuildRequires:	cmake
+BuildRequires:	cmake >= 2.8
 BuildRequires:	desktop-file-utils
 BuildRequires:	libp11-devel
 BuildRequires:	openssl-devel
@@ -33,16 +33,20 @@ extract and view certificates, set up mobile ID, and configure
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p1
 
 # Remove bundled qtsingleapplication to make sure it isn't used
-rm -rf qtsingleapplication
+#rm -r qtsingleapplication
 
 %build
 install -d build
 cd build
-%cmake ..
+%cmake \
+%ifarch %{arm} %{ix86} %{x8664}
+	-DBREAKPAD=ON \
+%endif
+	..
 %{__make}
 
 %install
@@ -63,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
+%doc AUTHORS README RELEASE-NOTES.txt
 %attr(755,root,root) %{_bindir}/qesteidutil
 %{_mandir}/man1/qesteidutil.1*
 %{_desktopdir}/qesteidutil.desktop
