@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	qt5		# Use Qt5 (instead of Qt4)
+
 Summary:	Estonian ID card utility
 Name:		qesteidutil
 Version:	3.8.0.1106
@@ -9,15 +13,23 @@ Source0:	https://installer.id.ee/media/sources/%{name}-%{version}.tar.gz
 #Patch0: %{name}-0.3.0-system_qtsingleapplication.patch
 Patch1:		desktop.patch
 URL:		http://www.ria.ee/
-BuildRequires:	QtSingleApplication-devel
-BuildRequires:	QtWebKit-devel
-BuildRequires:	QtXmlPatterns-devel
 BuildRequires:	cmake >= 2.8
 BuildRequires:	desktop-file-utils
 BuildRequires:	libp11-devel
 BuildRequires:	openssl-devel
+%if %{with qt5}
+BuildRequires:	Qt5WebKit-devel
+BuildRequires:	Qt5Widgets-devel
+BuildRequires:	qt5-build
+BuildRequires:	qt5-linguist
+%else
+BuildRequires:	QtSingleApplication-devel
+BuildRequires:	QtWebKit-devel
+BuildRequires:	QtXmlPatterns-devel
 BuildRequires:	qt4-build
 BuildRequires:	qt4-linguist
+BuildConflicts:	Qt5Widgets-devel
+%endif
 BuildRequires:	smartcardpp-devel
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
