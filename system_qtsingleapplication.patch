@@ -1,0 +1,33 @@
+--- qesteidutil-3.8.0.1106/CMakeLists.txt~	2013-12-02 12:10:51.000000000 +0200
++++ qesteidutil-3.8.0.1106/CMakeLists.txt	2015-02-22 19:41:23.932238031 +0200
+@@ -54,7 +54,6 @@
+ 	${CMAKE_BINARY_DIR}
+ 	${OPENSSL_INCLUDE_DIR}
+ 	${PCSCLITE_INCLUDE_DIR}
+-	qtsingleapplication/src
+ )
+ 
+ add_executable( ${PROGNAME} WIN32 MACOSX_BUNDLE
+--- qesteidutil-3.8.0.1106/common/CMakeLists.txt~	2013-06-05 16:01:05.000000000 +0300
++++ qesteidutil-3.8.0.1106/common/CMakeLists.txt	2015-02-22 19:42:43.412893984 +0200
+@@ -27,8 +27,7 @@
+ 	endif()
+ else()
+ 	include_directories( ${CMAKE_SOURCE_DIR} )
+-	add_subdirectory( ../qtsingleapplication ${CMAKE_BINARY_DIR}/qtsingleapplication )
+-	list( APPEND LIBRARIES qtsingleapplication )
++	list( APPEND LIBRARIES QtSolutions_SingleApplication-2.6)
+ endif()
+ 
+ set( TS_FILES
+--- qesteidutil-3.8.0.1106/common/Common.h~	2013-12-02 11:48:37.000000000 +0200
++++ qesteidutil-3.8.0.1106/common/Common.h	2015-02-22 20:09:05.556946877 +0200
+@@ -32,7 +32,7 @@
+ #endif
+ typedef QApplication BaseApplication;
+ #else
+-#include "qtsingleapplication/src/QtSingleApplication"
++#include "QtSolutions/QtSingleApplication"
+ typedef QtSingleApplication BaseApplication;
+ #endif
+ 
