@@ -31,3 +31,15 @@
  typedef QtSingleApplication BaseApplication;
  #endif
  
+--- qesteidutil-3.8.0.1106/src/main.cpp~	2015-02-23 09:19:12.000000000 +0200
++++ qesteidutil-3.8.0.1106/src/main.cpp	2015-02-23 09:19:35.942253525 +0200
+@@ -63,7 +63,8 @@
+ #ifndef Q_OS_MAC
+ 	if( app.isRunning() )
+ 	{
+-		app.sendMessage( "" );
++		QString message = "";
++		app.sendMessage( message );
+ 		return 0;
+ 	}
+ #endif
