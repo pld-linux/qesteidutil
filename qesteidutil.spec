@@ -1,37 +1,25 @@
-#
-# Conditional build:
-%bcond_with	qt5		# Use Qt5 (instead of Qt4)
-
-%define		qt4ver	4.8.0
 Summary:	Estonian ID card utility
 Name:		qesteidutil
-Version:	3.8.0.1106
+Version:	3.12.10
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://installer.id.ee/media/sources/%{name}-%{version}.tar.gz
-# Source0-md5:	4e5a792fa4de027d367a26b4f0b82ac1
+Source0:	https://github.com/open-eid/qesteidutil/releases/download/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	4e3805d3449e94427a67f5dfe7bae3c9
 Patch0:		system_qtsingleapplication.patch
 Patch1:		desktop.patch
-URL:		http://www.ria.ee/
-BuildRequires:	cmake >= 2.8
+URL:		https://github.com/open-eid/qesteidutil
+BuildRequires:	Qt5Core-devel
+BuildRequires:	Qt5Network-devel
+BuildRequires:	Qt5SingleApplication-devel
+BuildRequires:	Qt5Widgets-devel
+BuildRequires:	cmake >= 3.0
 BuildRequires:	desktop-file-utils
 BuildRequires:	openssl-devel
 BuildRequires:	pcsc-lite-devel
-%if %{with qt5}
-BuildRequires:	Qt5Network-devel
-BuildRequires:	Qt5Widgets-devel
 BuildRequires:	qt5-build
 BuildRequires:	qt5-linguist
 BuildRequires:	qt5-qmake
-%else
-BuildRequires:	QtGui-devel >= %{qt4ver}
-BuildRequires:	QtNetwork-devel >= %{qt4ver}
-BuildRequires:	QtSingleApplication-devel >= 2.6.1
-BuildRequires:	qt4-build
-BuildRequires:	qt4-linguist
-BuildConflicts:	Qt5Widgets-devel
-%endif
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
 Requires:	hicolor-icon-theme
@@ -50,7 +38,7 @@ extract and view certificates, set up mobile ID, and configure
 %patch1 -p1
 
 # Remove bundled qtsingleapplication to make sure it isn't used
-rm -r qtsingleapplication
+rm -r common/qtsingleapplication
 
 %build
 install -d build
