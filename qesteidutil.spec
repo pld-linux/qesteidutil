@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	breakpad		# build without breakpad crash reporting
+%bcond_with	breakpad		# build without breakpad crash reporting
 
 %ifnarch %{arm} %{ix86} %{x8664}
 %undefine	with_breakpad
