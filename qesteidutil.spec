@@ -23,6 +23,7 @@ BuildRequires:	Qt5SingleApplication-devel
 BuildRequires:	Qt5Widgets-devel
 BuildRequires:	cmake >= 3.0
 BuildRequires:	desktop-file-utils
+BuildRequires:	libstdc++-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pcsc-lite-devel
 BuildRequires:	qt5-build
