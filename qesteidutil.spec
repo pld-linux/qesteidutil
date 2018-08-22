@@ -16,6 +16,7 @@ Source0:	https://github.com/open-eid/qesteidutil/releases/download/v%{version}/%
 # Source0-md5:	4e3805d3449e94427a67f5dfe7bae3c9
 Patch0:		system_qtsingleapplication.patch
 Patch1:		desktop.patch
+Patch2:		qt-5.11.patch
 URL:		https://github.com/open-eid/qesteidutil
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Network-devel
@@ -46,6 +47,7 @@ extract and view certificates, set up mobile ID, and configure
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # Remove bundled qtsingleapplication to make sure it isn't used
 rm -r common/qtsingleapplication
