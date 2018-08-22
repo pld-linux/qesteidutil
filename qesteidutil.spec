@@ -5,6 +5,7 @@
 %define		qt4ver	4.8.0
 Summary:	Estonian ID card utility
 Name:		qesteidutil
+# NOTE: update to 3.12.10 is on dev-3.12 branch, but fails to compile
 Version:	3.8.0.1106
 Release:	1
 License:	LGPL v2+
