@@ -1,3 +1,11 @@
+#
+# Conditional build:
+%bcond_without	breakpad		# build without breakpad crash reporting
+
+%ifnarch %{arm} %{ix86} %{x8664}
+%undefine	with_breakpad
+%endif
+
 Summary:	Estonian ID card utility
 Name:		qesteidutil
 Version:	3.12.10
@@ -44,8 +52,8 @@ rm -r common/qtsingleapplication
 install -d build
 cd build
 %cmake \
-%ifarch %{arm} %{ix86} %{x8664}
-	-DBREAKPAD=ON \
+%if %{without breakpad}
+	-DBREAKPAD="" \
 %endif
 	..
 %{__make}
