@@ -1,0 +1,20 @@
+--- qesteidutil-3.12.10/src/Updater.cpp~	2017-11-22 14:34:33.000000000 +0200
++++ qesteidutil-3.12.10/src/Updater.cpp	2018-08-22 13:25:34.252173986 +0300
+@@ -38,6 +38,7 @@
+ #include <QtNetwork/QNetworkReply>
+ #include <QtNetwork/QSslKey>
+ #include <QtGui/QPainter>
++#include <QtGui/QRegExpValidator>
+ #include <QtWidgets/QPushButton>
+ 
+ #include <openssl/evp.h>
+--- qesteidutil-3.12.10/src/MainWindow.cpp~	2017-11-22 14:34:33.000000000 +0200
++++ qesteidutil-3.12.10/src/MainWindow.cpp	2018-08-22 13:24:47.763068029 +0300
+@@ -56,6 +56,7 @@
+ #include <QtNetwork/QSslKey>
+ #include <QtWidgets/QFileDialog>
+ #include <QtWidgets/QMessageBox>
++#include <QtWidgets/QButtonGroup>
+ 
+ Q_DECLARE_METATYPE(Emails)
+ 
