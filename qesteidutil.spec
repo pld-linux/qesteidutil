@@ -77,8 +77,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS README RELEASE-NOTES.txt
+%doc AUTHORS README.md RELEASE-NOTES.md
 %attr(755,root,root) %{_bindir}/qesteidutil
 %{_mandir}/man1/qesteidutil.1*
+%{_datadir}/appdata/qesteidutil.appdata.xml
 %{_desktopdir}/qesteidutil.desktop
 %{_iconsdir}/hicolor/*/apps/qesteidutil.png
