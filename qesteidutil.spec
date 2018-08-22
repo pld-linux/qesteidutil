@@ -21,6 +21,7 @@ BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Network-devel
 BuildRequires:	Qt5SingleApplication-devel
 BuildRequires:	Qt5Widgets-devel
+BuildRequires:	appstream-glib
 BuildRequires:	cmake >= 3.0
 BuildRequires:	desktop-file-utils
 BuildRequires:	libstdc++-devel
@@ -65,6 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 desktop-file-validate $RPM_BUILD_ROOT%{_desktopdir}/qesteidutil.desktop
+appstream-util validate-relax --nonet $RPM_BUILD_ROOT%{_datadir}/appdata/%{name}.appdata.xml
 
 %clean
 rm -rf $RPM_BUILD_ROOT
